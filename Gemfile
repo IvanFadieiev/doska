@@ -43,3 +43,5 @@ group :development, :test do
   gem 'spring'
 end
 gem 'bcrypt-ruby', '3.1.2'
+gem 'factory_girl_rails', '4.2.1'
+gem 'paperclip', '~> 4.1'

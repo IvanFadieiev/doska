@@ -11,9 +11,10 @@
     </div>
   <% end %>
 
+
   <div class="field">
     <%= f.label :user %><br>
-    <%= f.text_field :user %>
+    <%= f.text_field :user, autofocus: true%>
   </div>
   <div class="field">
     <%= f.label :full_name %><br>
@@ -51,7 +52,18 @@
     <%= f.label :longitude %><br>
     <%= f.text_field :longitude %>
   </div>
+
+<div class="field">
+  <%= f.label :avatar, "Avatar:"%><br>
+  <%= f.file_field :avatar%>
+</div>
+
+
+
+<br><br>
   <div class="actions">
     <%= f.submit %>
   </div>
+
+
 <% end %>
