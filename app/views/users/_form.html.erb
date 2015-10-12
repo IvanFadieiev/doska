@@ -22,11 +22,11 @@
   </div>
   <div class="field">
     <%= f.label :birthday %><br>
-    <%= f.text_field :birthday %>
+    <%= f.date_field :birthday %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.email_field :email %>
   </div>
   <div class="field">
     <%= f.label :adress %><br>
@@ -42,29 +42,17 @@
   </div>
   <div class="field">
     <%= f.label :password %><br>
-    <%= f.text_field :password %>
+    <%= f.password_field :password %>
   </div>
   <div class="field">
     <%= f.label :password_confirmation, "Confirmation" %><br>
-    <%= f.text_field :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
   </div>  
   <div class="field">
-    <%= f.label :latitude %><br>
-    <%= f.text_field :latitude %>
+    <%= f.label :avatar, "Avatar:"%><br><br>
+    <%= f.file_field :avatar%>
   </div>
-  <div class="field">
-    <%= f.label :longitude %><br>
-    <%= f.text_field :longitude %>
-  </div>
-
-<div class="field">
-  <%= f.label :avatar, "Avatar:"%><br><br>
-  <%= f.file_field :avatar%>
-</div>
-
-
-
-<br><br>
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>
