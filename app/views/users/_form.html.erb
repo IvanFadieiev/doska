@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-
+<center>
   <div class="field">
     <%= f.label :user %><br>
     <%= f.text_field :user, autofocus: true%>
@@ -41,9 +41,13 @@
     <%= f.text_field :country %>
   </div>
   <div class="field">
-    <%= f.label :password_digest %><br>
-    <%= f.text_field :password_digest %>
+    <%= f.label :password %><br>
+    <%= f.text_field :password %>
   </div>
+  <div class="field">
+    <%= f.label :password_confirmation, "Confirmation" %><br>
+    <%= f.text_field :password_confirmation %>
+  </div>  
   <div class="field">
     <%= f.label :latitude %><br>
     <%= f.text_field :latitude %>
@@ -54,7 +58,7 @@
   </div>
 
 <div class="field">
-  <%= f.label :avatar, "Avatar:"%><br>
+  <%= f.label :avatar, "Avatar:"%><br><br>
   <%= f.file_field :avatar%>
 </div>
 
@@ -67,3 +71,4 @@
 
 
 <% end %>
+</center>

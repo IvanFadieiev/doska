@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
- has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#", :small => "100x100#" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   before_save do 
@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
                     format:     { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password_digest, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }
   validates :full_name, presence: true 
   validates :birthday, presence: true
   validates :adress, presence: true

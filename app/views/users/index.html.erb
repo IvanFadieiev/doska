@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
-
+<center>
 <h1>Listing Users</h1>
 
 <table>
   <thead>
     <tr>
+      <th>   </th>
       <th>User</th>
       <th>Full name</th>
       <th>Birthday</th>
@@ -12,7 +13,6 @@
       <th>Adress</th>
       <th>City</th>
       <th>Country</th>
-      <th>Password</th>
       <th>Latitude</th>
       <th>Longitude</th>
       <th colspan="3"></th>
@@ -22,6 +22,9 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
+        <td> <div class="round-image-50">
+<%= image_tag(user.avatar.url(:thumb)) %>
+      </div></td>
         <td><%= user.user %></td>
         <td><%= user.full_name %></td>
         <td><%= user.birthday %></td>
@@ -29,12 +32,11 @@
         <td><%= user.adress %></td>
         <td><%= user.city %></td>
         <td><%= user.country %></td>
-        <td><%= user.password_digest%></td>
         <td><%= user.latitude %></td>
         <td><%= user.longitude %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Уверен, ёпта?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -42,4 +44,6 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+
+<%=  link_to 'New User', new_user_path %>
+</center>

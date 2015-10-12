@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :adress
       t.string :city
       t.string :country
-      t.string :password_digest
+      t.string :password
       t.float :latitude
       t.float :longitude
 

@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
-
-<div class="round-image-50">
-<%= image_tag(@user.avatar.url(:thumb)) %>
+<center>
+<div class="round-image-300">
+<%= image_tag(@user.avatar.url(:medium)) %>
 </div>
 
 <p>
@@ -40,11 +40,6 @@
 </p>
 
 <p>
-  <strong>password_digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
-<p>
   <strong>Latitude:</strong>
   <%= @user.latitude %>
 </p>
@@ -56,3 +51,4 @@
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+</center>
