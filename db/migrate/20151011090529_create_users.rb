@@ -11,7 +11,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password
       t.float :latitude
       t.float :longitude
-
+      
       t.timestamps null: false
     end
   end
