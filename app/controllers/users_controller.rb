@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :signed_in_user, only: [:edit, :update]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :correct_user,   only: [:edit, :update, :destroy]
   # GET /users
   # GET /users.json
   def index
@@ -60,9 +60,8 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to new_user_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
-      redirect_to root_url
     end
   end
 
