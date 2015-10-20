@@ -1,0 +1,22 @@
+
+  <p>
+    <strong>Post:</strong>
+    <%= post.body %>
+  </p>
+<% end %>
+ 
+<h2>Add a post:</h2>
+<%= form_for([@user, @user.posts.build]) do |f| %>
+  <p>
+    <%= f.label :poster %><br />
+    <%= f.text_field :poster %>
+  </p>
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+ 
