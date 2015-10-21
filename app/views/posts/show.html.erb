@@ -1,22 +1,15 @@
+  <h1><strong><%= link_to current_user.user, current_user %> POSTS</strong><br></h1>
+_______________________________________
+<% @post.each do |post| %>
 
-  <p>
-    <strong>Post:</strong>
-    <%= post.body %>
-  </p>
+<p>
+  <strong>Poster:</strong>
+  <%= post.poster %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= post.body %>
+</p>
+________________________________________
 <% end %>
- 
-<h2>Add a post:</h2>
-<%= form_for([@user, @user.posts.build]) do |f| %>
-  <p>
-    <%= f.label :poster %><br />
-    <%= f.text_field :poster %>
-  </p>
-  <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
- 

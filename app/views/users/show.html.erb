@@ -95,25 +95,11 @@
 </div>
 <br>
 
-<h2>Add a post:</h2>
-<%= form_for([@user, @user.posts.build]) do |f| %>
-  <p>
-    <%= f.label :poster %><br />
-    <%= f.text_field :poster %>
-  </p>
-  <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-
-
-
-<%= link_to current_user.user, current_user %> |
-<%= link_to 'Edit', edit_user_path(@user) %> |
+| <%= link_to 'New Post', new_user_post_path(@user)%> |
+<%= link_to 'All Posts', user_posts_path(@user) %> |
+<%= link_to 'My Posts', post_path(@user) %> |
+<br>
+| <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Listing Users', users_path %> |
-<%= link_to "Sign out", signout_path, method: "delete" %>|
+<%= link_to "Sign out", signout_path, method: "delete" %> |
 </center>

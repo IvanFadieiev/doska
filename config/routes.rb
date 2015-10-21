@@ -5,12 +5,14 @@ Rails.application.routes.draw do
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
-  match '/posts',   to: 'posts#index',          via: 'get'
 
   resources :users do
-  resources :posts
+  resources :posts, only: [:index, :new, :create]
   end
-  
+  resources :posts, only: [:show, :edit, :update, :destroy]
+
+  #edit_user_post_path  GET /users/:user_id/posts/:id/edit(.:format)  posts#edit
+  #new_user_post_path  GET /users/:user_id/posts/new(.:format) posts#new
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
