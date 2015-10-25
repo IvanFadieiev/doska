@@ -1,0 +1,16 @@
+  <h1><strong><%= link_to current_user.user, current_user %> POSTS</strong><br></h1>
+_______________________________________
+<% @post.each do |post| %>
+
+<p>
+  <strong>Poster:</strong>
+  <%= post.poster %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= post.body %>
+</p>
+<td><%= link_to 'show', post_path(post) %></td><br>
+_______________________________________
+<% end %>

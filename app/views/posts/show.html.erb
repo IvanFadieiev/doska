@@ -1,17 +1,15 @@
-  <h1><strong><%= link_to current_user.user, current_user %> POSTS</strong><br></h1>
 _______________________________________
-<% @post.each do |post| %>
 
 <p>
   <strong>Poster:</strong>
-  <%= post.poster %>
+  <%= @post.poster %>
 </p>
 
 <p>
   <strong>Body:</strong>
-  <%= post.body %>
+  <%= @post.body %>
 </p>
-<%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }%><br>
-<%= link_to 'Edit', edit_post_path(post) %><br>
-________________________________________
-<% end %>
+
+<%= link_to 'All posts', posts_path %><br>
+<%= link_to 'Edit', edit_post_path(@post) %><br>
+<%= link_to "Delete", @posts, method: :delete, data: { confirm: "You sure?" }%><br>________________________________________
