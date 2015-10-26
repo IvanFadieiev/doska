@@ -28,10 +28,8 @@ class User < ActiveRecord::Base
   validates :adress, presence: true
   validates :city, presence: true
   validates :country, presence: true
-  validates_attachment :avatar, content_type: {
-    content_type: %r{ \Aimage\/.*\Z }
-  }
-
+  validates_attachment :avatar, content_type: { content_type: /\Aimage\/.*\Z/ }
+  
   def self.new_remember_token
     SecureRandom.urlsafe_base64
   end

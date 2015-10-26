@@ -17,3 +17,5 @@
 //= require underscore
 //= require gmaps/google
 //= require_tree .
+//= require textile-editor
+//= require ./textile-editor-config

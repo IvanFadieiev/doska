@@ -48,3 +48,5 @@ gem 'bootstrap-sass', '2.3.2.0'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'geokit'
+gem "redcloth-rails"
+gem 'RedCloth', '~> 4.2', '>= 4.2.9'

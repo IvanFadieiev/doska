@@ -20,7 +20,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-
+    @user = @post.user
+    @avatar = @user.avatar
   end
 
   def destroy
@@ -45,6 +46,11 @@ class PostsController < ApplicationController
 
   def my_posts
     @post = current_user.posts
+  end
+
+  def avatar  
+    @user = User.find(params[:user_id])
+    @avatar = @user.avatar
   end
 
   private
