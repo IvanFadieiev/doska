@@ -5,7 +5,7 @@ _______________________________________
       </div>
 <strong> Author: </strong><%= @post.user.user%>
 <p>
-  <strong>Title:</strong>
+  <strong><h2>Title:</h2></strong>
   <%= RedCloth.new(@post.poster).to_html.html_safe %>
 </p>
 
@@ -17,5 +17,38 @@ _______________________________________
 
 <%= link_to 'All posts', posts_path %><br>
 <%= link_to 'Edit', edit_post_path(@post) %><br>
-<%= link_to "Delete", @posts, method: :delete, data: { confirm: "You sure?" }%><br>________________________________________
+<%= link_to "Delete", @posts, method: :delete, data: { confirm: "You sure?" }%><br>
+________________________________________
 </center>
+
+
+<% @post.comments.each do |com| %>
+<p><div class="round-image-50">
+<%= image_tag(com.user.avatar.url(:medium)) %>
+      </div>
+
+  <strong>Commenter: </strong>
+  <%= com.user.user %>
+  
+</p>
+<p>
+  <h2><strong>Comment:</strong></h2>
+  <%= com.body %>
+</p>
+#########################################<br>
+<%= link_to 'Edit', edit_post_comment_path(com,@post.id) %><br>
+<%= link_to "Delete", com, method: :delete, data: { confirm: "You sure?" }%><br>
+<% end%>
+
+<h2>Add a comment:</h2>
+<%= form_for([@post, @post.comments.build]) do |f| %>
+  
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+  <% end %>
+

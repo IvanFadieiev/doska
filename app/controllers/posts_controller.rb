@@ -1,6 +1,8 @@
+# posts_controller
 class PostsController < ApplicationController
+  before_filter :find_post, only: [:show, :destroy, :edit, :update]
+  before_filter :find_user, only: [:new, :avatar, :create]
   def create
-    @user = User.find(params[:user_id])
     @post = @user.posts.create(post_params)
     if @post.save
       redirect_to posts_path, notice: 'Post was successfully created.'
@@ -14,29 +16,24 @@ class PostsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
     @post = @user.posts.build
   end
 
   def show
-    @post = Post.find(params[:id])
     @user = @post.user
     @avatar = @user.avatar
   end
 
   def destroy
-    @post = Post.find(params[:id])
     if @post.destroy
       redirect_to posts_path, notice: 'Post was successfully delit.'
     end
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
     if @post.update(post_params)
       redirect_to post_path(@post), notice: 'Post was updated'
     else
@@ -49,7 +46,6 @@ class PostsController < ApplicationController
   end
 
   def avatar  
-    @user = User.find(params[:user_id])
     @avatar = @user.avatar
   end
 
@@ -57,5 +53,13 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:poster, :body)
+  end
+
+  def find_post
+    @post = Post.find(params[:id])
+  end
+
+  def find_user
+    @user = User.find(params[:user_id])
   end
 end
