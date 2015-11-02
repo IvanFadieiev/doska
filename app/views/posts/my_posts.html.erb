@@ -13,7 +13,7 @@ _______________________________________
 
 <p>
   <strong>Body:</strong>
-  <%= RedCloth.new(post.body).to_html.html_safe %>
+  <td><%= RedCloth.new(truncate(post.body, length: 100, separator: ' ')).to_html.html_safe %></td>
 </p>
 <td><%= link_to 'show', post_path(post) %></td><br>
 _______________________________________

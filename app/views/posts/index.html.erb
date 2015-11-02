@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th></th>
       <th>Author</th>
       <th>Title</th>
       <th>Body</th>
@@ -15,9 +16,10 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
+        <td><div class="round-image-50"><%= image_tag(post.user.avatar.url(:medium)) %></div></td>
         <td><strong><%= post.user.user%></strong></td>
         <td><%= RedCloth.new(post.poster).to_html.html_safe %></td>
-        <td><%= RedCloth.new(post.body).to_html.html_safe %></td>
+        <td><%= RedCloth.new(truncate(post.body, length: 100, separator: ' ')).to_html.html_safe %></td>
         <td><%= link_to 'show', post_path(post) %></td>
         </tr>
     <% end %>
