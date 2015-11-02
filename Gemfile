@@ -50,3 +50,5 @@ gem 'gmaps4rails'
 gem 'geokit'
 gem "redcloth-rails"
 gem 'RedCloth', '~> 4.2', '>= 4.2.9'
+gem 'responders'
+gem 'sprockets', '~> 3.4'

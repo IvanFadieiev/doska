@@ -1,7 +1,7 @@
 # comments_controller
 class CommentsController < ApplicationController
   before_filter :find_post,    only: [:new, :create]
-  before_filter :find_comment, only: [:update, :destroy]
+  before_filter :find_comment, only: [:edit, :update, :destroy]
   def new
     @comment = @post.comments.build
     @comment.user_id = current_user.id
@@ -9,17 +9,20 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @post.comments.create(comment_params)
+    @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id
-    if @comment.save
-      redirect_to :back
-    else
-      render new
+    respond_to do |format|
+      if @comment.save
+        format.json do
+          render json: {
+            comment: @comment, user_avatar: @comment.user.avatar.url(:medium),
+            user: @comment.user
+          }
+        end
+      else
+        format.json { render json: { status: 500 } }
+      end
     end
-  end
-
-  def edit
-    @comment = Comment.find(params[:post_id])
   end
 
   def update
@@ -31,9 +34,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    if @comment.destroy
-      redirect_to :back, notice: 'Comment was  delit.'
-    end
+    @comment.destroy
+    respond_to do |format|
+      format.html { redirect_to posts_url}
+      format.json { head :no_content }
+      format.js { render :layout => false }
+   end 
   end
 
   private

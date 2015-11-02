@@ -2,6 +2,7 @@
 class PostsController < ApplicationController
   before_filter :find_post, only: [:show, :destroy, :edit, :update]
   before_filter :find_user, only: [:new, :avatar, :create]
+  respond_to :html, :js
   def create
     @post = @user.posts.create(post_params)
     if @post.save

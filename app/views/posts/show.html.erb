@@ -1,3 +1,4 @@
+
 <center>
 _______________________________________
  <div class="round-image-300">
@@ -22,33 +23,39 @@ ________________________________________
 </center>
 
 
-<% @post.comments.each do |com| %>
-<p><div class="round-image-50">
-<%= image_tag(com.user.avatar.url(:medium)) %>
-      </div>
-
-  <strong>Commenter: </strong>
-  <%= com.user.user %>
-  
-</p>
-<p>
-  <h2><strong>Comment:</strong></h2>
-  <%= com.body %>
-</p>
-#########################################<br>
-<%= link_to 'Edit', edit_post_comment_path(com,@post.id) %><br>
-<%= link_to "Delete", com, method: :delete, data: { confirm: "You sure?" }%><br>
-<% end%>
+<table id='post_comments'>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th><strong>Commenter: </strong></th>
+      <th><strong>Comment:   </strong></th>
+      <th><strong>Edit:	   </strong></th>
+      <th><strong>Destroy:   </strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr></tr>
+    <% @post.comments.each do |com| %>
+      <tr>
+        <td><%= com.id %></td>
+        <td><div class="round-image-50"><%= image_tag(com.user.avatar.url(:medium)) %></div></td>
+        <td><%= com.user.user %></td>
+        <td><%= com.body %></td>
+        <td><%= link_to 'Edit', edit_post_comment_path(@post.id, com) %></td>
+        <td><%= link_to "Destroy", com, method: :delete, data: { confirm: "точно?"}, :remote => true, :class => 'deleteAction' %></td>
+      </tr>
+    <% end%>
+  </tbody>
+</table>
 
 <h2>Add a comment:</h2>
 <%= form_for([@post, @post.comments.build]) do |f| %>
-  
-  <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </p>
-  <p>
+	<p>
+  	<%= f.label :body %><br />
+  	<%= f.text_area :body %>
+	</p>
+	<p>
     <%= f.submit %>
-  </p>
-  <% end %>
-
+	</p>
+<% end %>
