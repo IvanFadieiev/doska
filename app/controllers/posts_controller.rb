@@ -14,6 +14,23 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+
+
+
+    if params[:by_poster]
+      @posts = Post.search(params[:by_poster])
+    elsif params[:by_body]
+      @posts = Post.search_body(params[:by_body])
+    elsif params[:by_name]
+      @posts = User.find_by_user(params[:by_name]).posts
+    elsif params[:by_city]
+      @posts = User.find_by_city(params[:by_city]).posts
+    else
+      @posts = Post.all
+    end
+  
+
+
   end
 
   def new
