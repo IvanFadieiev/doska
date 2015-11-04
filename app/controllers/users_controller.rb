@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :signed_in_user, only: [:edit, :update]
   before_action :set_user, only: [:show, :edit, :update]
   before_action :correct_user,   only: [:edit, :update, :destroy]
+  before_action :admin_user,     only: :destroy
   # GET /users
   # GET /users.json
   def index
@@ -66,7 +67,8 @@ class UsersController < ApplicationController
       :user, :full_name, :birthday,
       :email, :adress, :city, :country,
       :password, :password_confirmation,
-      :latitude, :longitude, :avatar
+      :latitude, :longitude, :avatar,
+      :admin, :moderator
     )
   end
 
@@ -80,4 +82,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     redirect_to(root_url) unless current_user?(@user)
   end
+
+  def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
 end

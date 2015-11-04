@@ -13,10 +13,6 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
-
-
-
     if params[:by_poster]
       @posts = Post.search(params[:by_poster])
     elsif params[:by_body]
@@ -28,9 +24,6 @@ class PostsController < ApplicationController
     else
       @posts = Post.all
     end
-  
-
-
   end
 
   def new

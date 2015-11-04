@@ -18,6 +18,7 @@ class CommentsController < ApplicationController
             comment: @comment, user_avatar: @comment.user.avatar.url(:medium),
             user: @comment.user
           }
+          
         end
       else
         format.json { render json: { status: 500 } }

@@ -17,8 +17,10 @@ _______________________________________
 <br>
 
 <%= link_to 'All posts', posts_path %><br>
+<% if (current_user.moderator? && !current_user?(@user)) || current_user?(@user) %>
 <%= link_to 'Edit', edit_post_path(@post) %><br>
 <%= link_to "Delete", @posts, method: :delete, data: { confirm: "You sure?" }%><br>
+<%end%>
 ________________________________________
 </center>
 
@@ -30,8 +32,6 @@ ________________________________________
       <th></th>
       <th><strong>Commenter: </strong></th>
       <th><strong>Comment:   </strong></th>
-      <th><strong>Edit:	   </strong></th>
-      <th><strong>Destroy:   </strong></th>
     </tr>
   </thead>
   <tbody>
@@ -42,8 +42,10 @@ ________________________________________
         <td><div class="round-image-50"><%= image_tag(com.user.avatar.url(:medium)) %></div></td>
         <td><%= com.user.user %></td>
         <td><%= com.body %></td>
+          <% if (current_user.moderator? && !current_user?(@user)) || current_user?(@user) %>
         <td><%= link_to 'Edit', edit_post_comment_path(@post.id, com) %></td>
         <td><%= link_to "Destroy", com, method: :delete, data: { confirm: "точно?"}, :remote => true, :class => 'deleteAction' %></td>
+          <%end%>
       </tr>
     <% end%>
   </tbody>

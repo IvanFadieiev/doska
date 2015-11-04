@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151028091604) do
+ActiveRecord::Schema.define(version: 20151104152057) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 20151028091604) do
     t.string   "adress"
     t.string   "city"
     t.string   "country"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "password"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 20151028091604) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "password_digest"
+    t.boolean  "admin",               default: false
+    t.boolean  "moderator",           default: false
   end
 
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
