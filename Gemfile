@@ -22,12 +22,6 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -40,9 +34,10 @@ group :development, :test do
   gem 'spring'
   gem 'pry', '0.10.1'
   gem 'pry-nav', '0.2.4'
+  gem 'rspec-rails', '2.13.1'
 end
 gem 'bcrypt-ruby', '3.1.2'
-gem 'factory_girl_rails', '4.2.1'
+#gem 'factory_girl_rails', '4.2.1'
 gem 'paperclip', '~> 4.1'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'geocoder'
@@ -52,3 +47,10 @@ gem "redcloth-rails"
 gem 'RedCloth', '~> 4.2', '>= 4.2.9'
 gem 'responders'
 gem 'sprockets', '~> 3.4'
+group :test do
+  gem 'selenium-webdriver', '2.35.1'
+  gem 'capybara', '2.1.0'
+  gem 'factory_girl_rails', '4.2.0'
+  gem 'cucumber-rails', '1.4.0', :require => false
+  gem 'database_cleaner', github: 'bmabey/database_cleaner'
+end
