@@ -27,25 +27,29 @@ ________________________________________
 
 <table id='post_comments'>
   <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th><strong>Commenter: </strong></th>
-      <th><strong>Comment:   </strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr></tr>
-    <% @post.comments.each do |com| %>
+  <% if @post.comments.count == 0 %>
+      <h3>Dear <%=current_user.user%>, pleas write first comment!</h3>
+  <% else%> 
       <tr>
-        <td><%= com.id %></td>
-        <td><div class="round-image-50"><%= image_tag(com.user.avatar.url(:medium)) %></div></td>
-        <td><%= com.user.user %></td>
-        <td><%= com.body %></td>
-          <% if (current_user.moderator? && !current_user?(@user)) || current_user?(@user) %>
-        <td><%= link_to 'Edit', edit_post_comment_path(@post.id, com) %></td>
-        <td><%= link_to "Destroy", com, method: :delete, data: { confirm: "точно?"}, :remote => true, :class => 'deleteAction' %></td>
-          <%end%>
+        <th></th>
+        <th></th>
+        <th><strong>Commenter: </strong></th>
+        <th><strong>Comment:   </strong></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr></tr>
+      <% @post.comments.each do |com| %>
+        <tr>
+          <td><%= com.id %></td>
+          <td><div class="round-image-50"><%= image_tag(com.user.avatar.url(:medium)) %></div></td>
+          <td><%= com.user.user %></td>
+          <td><%= com.body %></td>
+            <% if (current_user.moderator? && !current_user?(@user)) || current_user.id == com.user_id  %>
+          <td><%= link_to 'Edit', edit_post_comment_path(@post.id, com) %></td>
+          <td><%= link_to "Destroy", com, method: :delete, data: { confirm: "точно?"}, :remote => true, :class => 'deleteAction' %></td>
+            <%end%>
+       <% end%>
       </tr>
     <% end%>
   </tbody>
@@ -53,10 +57,7 @@ ________________________________________
 
 <h2>Add a comment:</h2>
 <%= form_for([@post, @post.comments.build]) do |f| %>
-	<p>
-  	<%= f.label :body %><br />
-  	<%= f.text_area :body %>
-	</p>
+	<%= render partial: "comments/form", locals:{ f: f} %>
 	<p>
     <%= f.submit %>
 	</p>

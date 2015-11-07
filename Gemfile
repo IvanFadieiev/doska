@@ -34,7 +34,6 @@ group :development, :test do
   gem 'spring'
   gem 'pry', '0.10.1'
   gem 'pry-nav', '0.2.4'
-  gem 'rspec-rails', '2.13.1'
 end
 gem 'bcrypt-ruby', '3.1.2'
 #gem 'factory_girl_rails', '4.2.1'
@@ -48,9 +47,7 @@ gem 'RedCloth', '~> 4.2', '>= 4.2.9'
 gem 'responders'
 gem 'sprockets', '~> 3.4'
 group :test do
-  gem 'selenium-webdriver', '2.35.1'
-  gem 'capybara', '2.1.0'
-  gem 'factory_girl_rails', '4.2.0'
-  gem 'cucumber-rails', '1.4.0', :require => false
-  gem 'database_cleaner', github: 'bmabey/database_cleaner'
+  gem 'rspec-rails'
+  gem 'factory_girl'
+  gem "minitest"
 end

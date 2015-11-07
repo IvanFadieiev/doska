@@ -1,0 +1,17 @@
+<%= form_tag(posts_path, :method => "get") do %>
+  <%= text_field_tag :by_poster, params[:by_poster], placeholder: "Search by title" %>
+  <%= submit_tag "Search" %>
+<% end %>
+  <%= form_tag(posts_path, :method => "get") do %>
+  <%= text_field_tag :by_body, params[:by_body], placeholder: "Search by body" %>
+  <%= submit_tag "Search" %>
+<% end %>
+ <%= form_tag(posts_path, :method => "get") do %>
+  <%= text_field_tag :by_name, params[:by_name], placeholder: "Search by name" %>
+  <%= submit_tag "Search" %>
+<% end %>
+ <%= form_tag(posts_path, :method => "get") do %>
+  <%= text_field_tag :by_city, params[:by_city], placeholder: "Search by city" %>
+  <%= submit_tag "Search" %>
+<% end %>
+<%= link_to "Back to All Posts", posts_path %>
