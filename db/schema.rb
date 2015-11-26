@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20151104152057) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
     t.text     "body"
     t.integer  "user_id"
@@ -29,7 +32,7 @@ ActiveRecord::Schema.define(version: 20151104152057) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "user"
@@ -39,6 +42,8 @@ ActiveRecord::Schema.define(version: 20151104152057) do
     t.string   "adress"
     t.string   "city"
     t.string   "country"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "password"
@@ -47,13 +52,12 @@ ActiveRecord::Schema.define(version: 20151104152057) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "remember_token"
-    t.float    "latitude"
-    t.float    "longitude"
     t.string   "password_digest"
     t.boolean  "admin",               default: false
     t.boolean  "moderator",           default: false
   end
 
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
+  add_foreign_key "posts", "users"
 end
