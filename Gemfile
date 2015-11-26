@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
-
+ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
+
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -34,7 +35,7 @@ group :development, :test do
   gem 'spring'
   gem 'pry', '0.10.1'
   gem 'pry-nav', '0.2.4'
-  # gem 'sqlite3'
+  gem 'sqlite3'
   # gem 'mysql2'
 end
 gem 'bcrypt-ruby', '3.1.2'
@@ -57,6 +58,5 @@ end
 group :production do
   gem 'rails_12factor'
   gem 'pg'
-  gem 'sqlite3'
 end
 gem 'foreman'
