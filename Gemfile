@@ -34,7 +34,7 @@ group :development, :test do
   gem 'spring'
   gem 'pry', '0.10.1'
   gem 'pry-nav', '0.2.4'
-  gem 'sqlite3'
+  # gem 'sqlite3'
   gem 'mysql2'
 end
 gem 'bcrypt-ruby', '3.1.2'
