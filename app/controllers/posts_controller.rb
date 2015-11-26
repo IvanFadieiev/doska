@@ -1,6 +1,6 @@
 # posts_controller
 class PostsController < ApplicationController
-  before_filter :find_post, only: [:show, :destroy, :edit, :update]
+  before_filter :find_post, only: [:destroy, :edit, :update]
   before_filter :find_user, only: [:new, :avatar, :create]
   respond_to :html, :js
   def create
@@ -41,8 +41,15 @@ class PostsController < ApplicationController
   end
 
   def show
-    @user = @post.user
-    @avatar = @user.avatar
+    begin
+      @post = Post.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        logger.error "Post #{params[:id]} not found"
+        redirect_to posts_path, notice: 'Post not found'
+      else
+        @user = @post.user
+        @avatar = @user.avatar
+      end
   end
 
   def destroy
@@ -66,7 +73,7 @@ class PostsController < ApplicationController
     @post = current_user.posts
   end
 
-  def avatar  
+  def avatar
     @avatar = @user.avatar
   end
 

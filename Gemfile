@@ -38,7 +38,7 @@ end
 gem 'bcrypt-ruby', '3.1.2'
 #gem 'factory_girl_rails', '4.2.1'
 gem 'paperclip', '~> 4.1'
-gem 'bootstrap-sass', '2.3.2.0'
+gem 'bootstrap-sass'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'geokit'
@@ -47,7 +47,7 @@ gem 'RedCloth', '~> 4.2', '>= 4.2.9'
 gem 'responders'
 gem 'sprockets', '~> 3.4'
 group :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.14.0'
   gem 'factory_girl'
-  gem "minitest"
+  gem 'minitest'
 end

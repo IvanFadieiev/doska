@@ -1,7 +1,7 @@
 # user_controller
 class UsersController < ApplicationController
   before_action :signed_in_user, only: [:edit, :update]
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:edit, :update]
   before_action :correct_user,   only: [:edit, :update, :destroy]
   before_action :admin_user,     only: :destroy
   # GET /users
@@ -19,6 +19,14 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def show
+    begin
+      @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      logger.error "User #{params[:id]} not found"
+      redirect_to users_path, notice: 'User not found'
+    end
+  end
   # POST /users
   # POST /users.json
   def create
@@ -84,6 +92,6 @@ class UsersController < ApplicationController
   end
 
   def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
+    redirect_to(root_url) unless current_user.admin?
+  end
 end
