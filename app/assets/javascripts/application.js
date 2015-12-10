@@ -24,7 +24,7 @@ $(document).ready(function () {
   $('#new_comment').submit(function(event) {
     event.preventDefault();
     $.ajax({
-      url: $(this).attr('action'),
+      url: $(this).attr('action')
       method: 'POST',
       data: $(this).serialize(),
       success: function (data) {

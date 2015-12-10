@@ -3,14 +3,17 @@ development:
   database: my_database_development
   pool: 5
   timeout: 5000
+  password: qwe
 test:
   adapter: postgresql
   database: my_database_test
   pool: 5
   timeout: 5000
+  password: qwe
 
 production:
   adapter: postgresql
   database: my_database_production
   pool: 5
   timeout: 5000
+  password: qwe

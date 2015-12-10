@@ -22,7 +22,7 @@ module Doska
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-    
+    config.force_ssl = true
     config.generators do |g|
         g.template_engine :haml
         g.test_framework   :rspec, fixtures: true, views:false

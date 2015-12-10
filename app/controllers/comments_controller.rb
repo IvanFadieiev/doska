@@ -21,6 +21,7 @@ class CommentsController < ApplicationController
           
         end
       else
+        format.html { render 'new'}
         format.json { render json: { status: 500 } }
       end
     end

@@ -21,8 +21,8 @@
     <% @users.each do |user| %>
       <tr>
         <td> <div class="round-image-50">
-<%= image_tag(user.avatar.url(:thumb)) %>
-      </div></td>
+          <%= image_tag(user.avatar.url(:thumb)) %>
+        </div></td>
         <td><%= user.user %></td>
         <td><%= user.full_name %></td>
         <td><%= user.birthday %></td>

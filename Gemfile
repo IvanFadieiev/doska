@@ -36,7 +36,7 @@ group :development, :test do
   gem 'pry-nav', '0.2.4'
   # gem 'sqlite3'
   # gem 'mysql2'
-  gem 'pg'
+  # gem 'pg'
 end
 gem 'bcrypt-ruby', '3.1.2'
 #gem 'factory_girl_rails', '4.2.1'
@@ -60,3 +60,4 @@ group :production do
   # gem 'pg'
 end
 gem 'foreman'
+gem 'pg'
